@@ -1,0 +1,6 @@
+[tool.pyright]
+pythonVersion = "3.12"
+typeCheckingMode = "basic"
+
+[tool.django-stubs]
+django_settings_module = "teamboard.settings"
