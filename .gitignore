@@ -7,3 +7,4 @@
 *.env*.local 
 /__pycache__ 
 __pycache__ 
+teamboard_plan.md
