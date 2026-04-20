@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -53,10 +52,7 @@ class LoginView(APIView):
         username = request.data.get('username')
         password = request.data.get('password')
 
-        try:
-            user = authenticate(username=username, password=password)
-        except Exception as e:
-            return Response({'error': str(e)}, status=status.HTTP_401_UNAUTHORIZED)
+        user = authenticate(username=username, password=password)
 
         if not user:
             return Response({'error': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
@@ -84,15 +80,14 @@ class KBQueryView(APIView):
 
         with transaction.atomic():
             entries = KBEntry.objects.filter(Q(question__icontains=search) | Q(answer__icontains=search))
-            serialize = KBEntrySerializer(entries, many=True)
-
+            results = KBEntrySerializer(entries, many=True).data
             count = entries.count()
-            query_log = QueryLog.objects.create(company=company, search_term=search, results_count=count)
+            QueryLog.objects.create(company=company, search_term=search, results_count=count)
 
         return Response({
             'search': search,
             'count': count,
-            'results': serialize.data,
+            'results': results,
         }, status=status.HTTP_200_OK)
 
 class UsageSummaryView(APIView):

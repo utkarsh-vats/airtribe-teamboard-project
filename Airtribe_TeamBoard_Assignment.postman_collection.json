@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "6f0c719a-168b-40ed-bf47-b8218e19cef6",
+		"name": "Airtribe_TeamBoard_Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11649124"
+	},
+	"item": [
+		{
+			"name": "Register_Auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\":     \"acmecorp\",\r\n  \"password\":     \"securepass123\",\r\n  \"company_name\": \"Acme Corp\",\r\n  \"email\":        \"dev@acmecorp.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login_Auth",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"acmecorp\",\r\n    \"password\": \"securepass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KB Query",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzE3NTExLCJpYXQiOjE3NzY3MTcyMTEsImp0aSI6IjI5Yzk0Nzg2M2VlNDQ4YTFiNmNlYmUyYTE0ZjQ4YTc3IiwidXNlcl9pZCI6IjEifQ.8GnwZx1FZeHjza7OfvLiARBkJ5tO6SIEo2pkLEHVbXg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzE3NTExLCJpYXQiOjE3NzY3MTcyMTEsImp0aSI6IjI5Yzk0Nzg2M2VlNDQ4YTFiNmNlYmUyYTE0ZjQ4YTc3IiwidXNlcl9pZCI6IjEifQ.8GnwZx1FZeHjza7OfvLiARBkJ5tO6SIEo2pkLEHVbXg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"search\": \"django\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/kb/query/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"kb",
+						"query",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usage_Summary",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzE3NTExLCJpYXQiOjE3NzY3MTcyMTEsImp0aSI6IjI5Yzk0Nzg2M2VlNDQ4YTFiNmNlYmUyYTE0ZjQ4YTc3IiwidXNlcl9pZCI6IjEifQ.8GnwZx1FZeHjza7OfvLiARBkJ5tO6SIEo2pkLEHVbXg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzE3NTExLCJpYXQiOjE3NzY3MTcyMTEsImp0aSI6IjI5Yzk0Nzg2M2VlNDQ4YTFiNmNlYmUyYTE0ZjQ4YTc3IiwidXNlcl9pZCI6IjEifQ.8GnwZx1FZeHjza7OfvLiARBkJ5tO6SIEo2pkLEHVbXg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"search\": \"django\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/kb/query/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"kb",
+						"query",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
