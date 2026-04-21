@@ -13,7 +13,41 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"username\":     \"acmecorp\",\r\n  \"password\":     \"securepass123\",\r\n  \"company_name\": \"Acme Corp\",\r\n  \"email\":        \"dev@acmecorp.com\"\r\n}",
+					"raw": "{\r\n  \"username\":     \"obtuse\",\r\n  \"password\":     \"obtuse@123\",\r\n  \"company_name\": \"Obtuse Labs\",\r\n  \"email\":        \"dev@obtuse.in\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/register/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register_Duplicate_Username",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\":     \"acmecorp\",\r\n  \"password\":     \"anotherpass123\",\r\n  \"company_name\": \"Acme Corp\",\r\n  \"email\":        \"another@acmecorp.com\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -47,6 +81,74 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"obtuse\",\r\n    \"password\": \"obtuse@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login_Auth_Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"acmecorp\",\r\n    \"password\": \"securepass123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/auth/login/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login_Auth_Wrong_Password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
 					"raw": "{\r\n    \"username\": \"acmecorp\",\r\n    \"password\": \"securepass\"\r\n}",
 					"options": {
 						"raw": {
@@ -75,6 +177,108 @@
 			"response": []
 		},
 		{
+			"name": "KBQuery_without_Token",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzE3NTExLCJpYXQiOjE3NzY3MTcyMTEsImp0aSI6IjI5Yzk0Nzg2M2VlNDQ4YTFiNmNlYmUyYTE0ZjQ4YTc3IiwidXNlcl9pZCI6IjEifQ.8GnwZx1FZeHjza7OfvLiARBkJ5tO6SIEo2pkLEHVbXg",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"search\": \"invalid_search_term\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/kb/query/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"kb",
+						"query",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "KBQuery_missing_Search_Field",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzYyNjc3LCJpYXQiOjE3NzY3NjIzNzcsImp0aSI6IjA1ZmU0YjJmNjZhYzRkNzQ5OWRhNGVjMDg1NDQ2ZTY5IiwidXNlcl9pZCI6IjIifQ.6-rKf931W43rYXp3myO3XZe5pCX0Uf_SCEUkB5S6mdw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzE3NTExLCJpYXQiOjE3NzY3MTcyMTEsImp0aSI6IjI5Yzk0Nzg2M2VlNDQ4YTFiNmNlYmUyYTE0ZjQ4YTc3IiwidXNlcl9pZCI6IjEifQ.8GnwZx1FZeHjza7OfvLiARBkJ5tO6SIEo2pkLEHVbXg",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/kb/query/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"kb",
+						"query",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "KB Query",
 			"request": {
 				"auth": {
@@ -82,7 +286,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzE3NTExLCJpYXQiOjE3NzY3MTcyMTEsImp0aSI6IjI5Yzk0Nzg2M2VlNDQ4YTFiNmNlYmUyYTE0ZjQ4YTc3IiwidXNlcl9pZCI6IjEifQ.8GnwZx1FZeHjza7OfvLiARBkJ5tO6SIEo2pkLEHVbXg",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzYyNjc3LCJpYXQiOjE3NzY3NjIzNzcsImp0aSI6IjA1ZmU0YjJmNjZhYzRkNzQ5OWRhNGVjMDg1NDQ2ZTY5IiwidXNlcl9pZCI6IjIifQ.6-rKf931W43rYXp3myO3XZe5pCX0Uf_SCEUkB5S6mdw",
 							"type": "string"
 						}
 					]
@@ -125,14 +329,14 @@
 			"response": []
 		},
 		{
-			"name": "Usage_Summary",
+			"name": "KBQuery_no_matches",
 			"request": {
 				"auth": {
 					"type": "bearer",
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzE3NTExLCJpYXQiOjE3NzY3MTcyMTEsImp0aSI6IjI5Yzk0Nzg2M2VlNDQ4YTFiNmNlYmUyYTE0ZjQ4YTc3IiwidXNlcl9pZCI6IjEifQ.8GnwZx1FZeHjza7OfvLiARBkJ5tO6SIEo2pkLEHVbXg",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzYzMDA3LCJpYXQiOjE3NzY3NjI3MDcsImp0aSI6ImUwNTJkODE3ODY5YzRlMjFiNDUwMjFmNjNhYzllZDcxIiwidXNlcl9pZCI6IjEifQ.rzvU7t0FVj1D2D13uUIcWGroxy04suU7UMv7jtOnmgc",
 							"type": "string"
 						}
 					]
@@ -147,7 +351,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"search\": \"django\"\r\n}",
+					"raw": "{\r\n    \"search\": \"invalid_search_term\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -168,6 +372,112 @@
 						"api",
 						"kb",
 						"query",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usage_Summary_Client",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzYzMTI2LCJpYXQiOjE3NzY3NjI4MjYsImp0aSI6IjMxMzBjMThhMGExZTQ4MzJhMGVmMDliN2E2ZDk4MTZjIiwidXNlcl9pZCI6IjIifQ.Ga2d8QEGhza5C1WTqPgvSCBg70s9EPmAkVdPf8KLfXc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzE4NDM4LCJpYXQiOjE3NzY3MTgxMzgsImp0aSI6IjhiNDM2NWYzNDhlZDQ0OTBhZDE0MmVjY2IxMWM5YWE1IiwidXNlcl9pZCI6IjEifQ.tQP59Reni77EjQNNyS2LBYIeQjnCObAL-sKEbrn9AeQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/admin/usage-summary/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"admin",
+						"usage-summary",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Usage_Summary_Admin",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzYzMTg2LCJpYXQiOjE3NzY3NjI4ODYsImp0aSI6ImEwOTZjOTZmMzRlNTQ3MmY5OGRhNGNmZDBjZTUwNzJlIiwidXNlcl9pZCI6IjEifQ.AlzHwvsgYXL-JdsP9_XVDx0amqfDz3sAGXfLT7vG8Rc",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Bearer",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzc2NzE4NDM4LCJpYXQiOjE3NzY3MTgxMzgsImp0aSI6IjhiNDM2NWYzNDhlZDQ0OTBhZDE0MmVjY2IxMWM5YWE1IiwidXNlcl9pZCI6IjEifQ.tQP59Reni77EjQNNyS2LBYIeQjnCObAL-sKEbrn9AeQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/admin/usage-summary/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"admin",
+						"usage-summary",
 						""
 					]
 				}

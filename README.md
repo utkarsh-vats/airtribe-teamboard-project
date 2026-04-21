@@ -203,7 +203,7 @@ Import the included `TeamBoard.postman_collection.json` file into Postman to run
 ```
 - **Expected:** `400 Bad Request`
 
-![Register Duplicate](./screenshots/Existing_User.png)
+![Register Duplicate](./screenshots/Register_Existing_Username.png)
 
 ---
 
@@ -239,7 +239,7 @@ Import the included `TeamBoard.postman_collection.json` file into Postman to run
 ```
 - **Expected:** `401 Unauthorized`
 
-![Login Wrong Password](./screenshots/Invalid_Creds.png)
+![Login Wrong Password](./screenshots/Login_Auth_Wrong_Password.png)
 
 ---
 
